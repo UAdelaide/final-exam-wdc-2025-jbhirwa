@@ -55,4 +55,37 @@ router.post('/login', async (req, res) => {
   }
 });
 
+// 
+//
+//
+//
+router.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const [rows] = await db.query(`
+      SELECT user_id, username, role FROM Users
+      WHERE email = ? AND password_hash = ?
+    `, [email, password]);
+
+    if (rows.length === 0) {
+      return res.status(401).json({ error: 'Invalid credentials' });
+    }
+
+    // Store user in session
+    req.session.user = {
+      user_id: rows[0].user_id,
+      username: rows[0].username,
+      role: rows[0].role
+    };
+
+    res.json({
+      message: 'Login successful',
+      role: rows[0].role
+    });
+  } catch (error) {
+    res.status(500).json({ error: 'Login failed' });
+  }
+});
+
 module.exports = router;
