@@ -96,7 +96,7 @@ app.get('/api/dogs', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch Dogs' });
   }
 });
-// Route to return walkrequests as JSON
+// Route to return open walkrequests as JSON
 app.get('/api/walkrequests/open', async (req, res) => {
   try {
     const [requests] = await db.execute("SELECT * FROM WalkRequests WHERE status = 'open'");
