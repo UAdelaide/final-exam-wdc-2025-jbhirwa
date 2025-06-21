@@ -1,6 +1,5 @@
 const express = require('express');
 const path = require('path');
-// require('dotenv').config();
 
 const app = express();
 
@@ -8,10 +7,6 @@ const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '/public')));
 
-// var express = require('express');
-// var path = require('path');
-// var cookieParser = require('cookie-parser');
-// var logger = require('morgan');
 var mysql = require('mysql2/promise');
 
 let db;
