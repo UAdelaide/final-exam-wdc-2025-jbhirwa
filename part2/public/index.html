@@ -26,7 +26,7 @@ document.getElementById('loginForm').onsubmit = async function(e) {
   // get form username and password value
   const username = document.getElementById('username').value;
   const password = document.getElementById('password').value;
-
+// send post request 
   const res = await fetch('/api/users/login', {
     method: 'POST',
     headers: {'Content-Type':'application/json'},
@@ -34,6 +34,7 @@ document.getElementById('loginForm').onsubmit = async function(e) {
     credentials: 'same-origin'
   });
   const data = await res.json();
+  // if login success, redirect according to role
   if (res.ok) {
     if (data.role.toLowerCase() === 'owner') {
       window.location.href = '/owner-dashboard.html';
