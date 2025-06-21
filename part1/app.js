@@ -8,6 +8,9 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 const pool = require('./db');
+app.get('/users', async (req, res) => {
+  try {
+    const [rows] = await pool.query('SELECT * FROM Users');
 
 
 app.use(logger('dev'));
