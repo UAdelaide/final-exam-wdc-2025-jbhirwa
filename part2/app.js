@@ -7,7 +7,9 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '/public')));
-
+app.listen(8080, '0.0.0.0', () => {
+  console.log('Server running on port 8080');
+});
 // Routes
 const walkRoutes = require('./routes/walkRoutes');
 // const userRoutes = require('./routes/userRoutes');
