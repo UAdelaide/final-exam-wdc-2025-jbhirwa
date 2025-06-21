@@ -1,12 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Express</title>
-    <link rel="stylesheet" href="/stylesheets/style.css">
+  <meta charset="UTF-8">
+  <title>Dog of the Day</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <style>
+    .dog-corner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 10%;
+    }
+  </style>
 </head>
-
 <body>
-    <h1>Express</h1>
-    <p>Welcome to Express</p>
+  <div id="app">
+    <form v-if="!showDog" @submit.prevent="handleSubmit">
+    <h4>you will need to click the small square to submit, once you enter your fav colour and name</h4>
+
+    <input v-model="favColor" placeholder="Enter your favorite colour" required>
+            <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultricies, augue vel cursus euismod, sapien nunc dictum ex, a consequat orci elit at nulla. Morbi aliquam placerat blandit. Vivamus dictum feugiat laoreet. Suspendisse cursus dolor in erat dictum, ut pretium lorem cursus. Nullam feugiat, mauris in scelerisque pretium, felis lectus porta eros, nec mattis mauris quam vitae orci.
+        </p>
+        <p>
+          Sed nec massa vel neque rhoncus facilisis. Praesent dictum, sem eu cursus laoreet, velit arcu tincidunt orci, a cursus nisi sem id mi. Integer ut enim pretium, tristique lectus non, facilisis odio. Pellentesque vitae velit dignissim, tristique mi a, rutrum erat.
+        </p>
+        <p>
+          Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Mauris aliquam egestas sapien, vel tincidunt est tempus in.
+        </p>
+      <p>Fill out this (unnecessary) form to see the Dog of the Day!</p>
+      <input v-model="name" placeholder="Enter your name" required>
+              <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultricies, augue vel cursus euismod, sapien nunc dictum ex, a consequat orci elit at nulla. Morbi aliquam placerat blandit. Vivamus dictum feugiat laoreet. Suspendisse cursus dolor in erat dictum, ut pretium lorem cursus. Nullam feugiat, mauris in scelerisque pretium, felis lectus porta eros, nec mattis mauris quam vitae orci.
+        </p>
+        <p>
+          Sed nec massa vel neque rhoncus facilisis. Praesent dictum, sem eu cursus laoreet, velit arcu tincidunt orci, a cursus nisi sem id mi. Integer ut enim pretium, tristique lectus non, facilisis odio. Pellentesque vitae velit dignissim, tristique mi a, rutrum erat.
+        </p>
+        <p>
+          Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Mauris aliquam egestas sapien, vel tincidunt est tempus in.
+        </p>
+      <button type="submit"> </button>
+    </form>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultricies, augue vel cursus euismod, sapien nunc dictum ex, a consequat orci elit at nulla. Morbi aliquam placerat blandit. Vivamus dictum feugiat laoreet. Suspendisse cursus dolor in erat dictum, ut pretium lorem cursus. Nullam feugiat, mauris in scelerisque pretium, felis lectus porta eros, nec mattis mauris quam vitae orci.
+        </p>
+        <p>
+          Sed nec massa vel neque rhoncus facilisis. Praesent dictum, sem eu cursus laoreet, velit arcu tincidunt orci, a cursus nisi sem id mi. Integer ut enim pretium, tristique lectus non, facilisis odio. Pellentesque vitae velit dignissim, tristique mi a, rutrum erat.
+        </p>
+        <p>
+          Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Mauris aliquam egestas sapien, vel tincidunt est tempus in.
+        </p>
+      <div class="dog-corner" v-if="showDog">
+        <img :src="dogImg" />
+      </div>
+  </div>
+  <script>
+    const { createApp } = Vue;
+    createApp({
+      data() {
+        return {
+          name: "",
+          favColor: "",
+          showDog: false,
+          dogImg: "",
+        };
+      },
+      methods: {
+        async handleSubmit() {
+          const res = await fetch('https://dog.ceo/api/breeds/image/random');
+          const data = await res.json();
+          this.dogImg = data.message;
+          this.showDog = true;
+        }
+      }
+    }).mount('#app');
+  </script>
 </body>
 </html>
