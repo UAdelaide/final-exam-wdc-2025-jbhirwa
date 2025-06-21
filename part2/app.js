@@ -15,5 +15,15 @@ const userRoutes = require('./routes/userRoutes');
 app.use('/api/walks', walkRoutes);
 app.use('/api/users', userRoutes);
 
+//
+//
+//
+const session = require('express-session');
+app.use(session({
+  secret: 'a_secret_key_for_session', // change this to something secure in production
+  resave: false,
+  saveUninitialized: false
+}));
+
 // Export the app instead of listening here
 module.exports = app;
