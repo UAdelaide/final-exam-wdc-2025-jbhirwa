@@ -13,16 +13,15 @@ To test your computer setup.
 [{"id":1,"title":"1984","author":"George Orwell"},{"id":2,"title":"To Kill a Mockingbird","author":"Harper Lee"},{"id":3,"title":"Brave New World","author":"Aldous Huxley"}]
 
 8. If this worked, then congratulations you are ready to start the exam.
--- 1. Insert Users
+
 INSERT INTO Users (username, email, password_hash, role)
 VALUES
   ('alice123', 'alice@example.com', 'hashed123', 'owner'),
   ('bobwalker', 'bob@example.com', 'hashed456', 'walker'),
   ('carol123', 'carol@example.com', 'hashed789', 'owner'),
-  ('daveowner', 'dave@example.com', 'pw123', 'owner'),
-  ('eveowner', 'eve@example.com', 'pw456', 'owner');
+  ('john', 'dave@example.com', 'pw123', 'owner'),
+  ('baptist', 'eve@example.com', 'pw456', 'owner');
 
--- 2. Insert Dogs (use subqueries to get owner_id)
 INSERT INTO Dogs (owner_id, name, size)
 VALUES
   ((SELECT user_id FROM Users WHERE username = 'alice123'), 'Max', 'medium'),
