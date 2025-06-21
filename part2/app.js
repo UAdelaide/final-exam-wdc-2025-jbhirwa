@@ -22,7 +22,7 @@ app.use('/api/walks', walkRoutes);
 //
 const session = require('express-session');
 app.use(session({
-  secret: 'a_secret_key_for_session', // change this to something secure in production
+  secret: 'secret', 
   resave: false,
   saveUninitialized: false
 }));
