@@ -17,9 +17,6 @@ const walkRoutes = require('./routes/walkRoutes');
 app.use('/api/walks', walkRoutes);
 // app.use('/api/users', userRoutes);
 
-//
-//
-//
 const session = require('express-session');
 app.use(session({
   secret: 'secret', 
