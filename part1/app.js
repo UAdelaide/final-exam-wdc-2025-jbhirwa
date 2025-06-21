@@ -111,7 +111,7 @@ app.get('/api/walkers/summary', async (req, res) => {
     const [summary] = await db.execute("SELECT request.request_id, dog.name AS dog_name, request.requested_time, request.duration_minutes, request.location, user.username AS owner_username FROM WalkRequests request JOIN Dogs dog ON request.dog_id = dog.dog_id JOIN Users user ON dog.owner_id = user.user_id WHERE request.status = 'open'");
     res.json(summary);
   } catch (err) {
-    res.status(500).json({ error: 'Failed to fetch requests' });
+    res.status(500).json({ error: 'Failed to fetch summary' });
   }
 });
 app.use(express.static(path.join(__dirname, 'public')));
