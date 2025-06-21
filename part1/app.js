@@ -13,12 +13,6 @@ app.use(express.static(path.join(__dirname, '/public')));
 // var cookieParser = require('cookie-parser');
 // var logger = require('morgan');
 var mysql = require('mysql2/promise');
-// var app = express();
-
-// app.use(logger('dev'));
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: false }));
-// app.use(cookieParser());
 
 let db;
 
@@ -35,9 +29,6 @@ let db;
     console.error('Error setting up database. Ensure Mysql is running: service mysql start', err);
   }
 })();
-// app.get('/', (req, res) => {
-//   res.send('Success');
-// });
 
 // Route to return Dogs as JSON
 app.get('/api/dogs', async (req, res) => {
