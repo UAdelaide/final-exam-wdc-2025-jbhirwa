@@ -26,6 +26,9 @@ let db;
     console.error('Error setting up database. Ensure Mysql is running: service mysql start', err);
   }
 })();
+app.get('/', (req, res) => {
+  res.send('Success');
+});
 
 // Route to return Dogs as JSON
 app.get('/api/dogs', async (req, res) => {
