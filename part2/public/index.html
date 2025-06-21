@@ -19,9 +19,11 @@
 </form>
 
 <script>
+  // login form submit with fetch to backend
 document.getElementById('loginForm').onsubmit = async function(e) {
   e.preventDefault();
   document.getElementById('loginError').textContent = '';
+  // get form username and password value
   const username = document.getElementById('username').value;
   const password = document.getElementById('password').value;
 
