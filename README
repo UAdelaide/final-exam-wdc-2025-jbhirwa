@@ -19,8 +19,8 @@ VALUES
   ('alice123', 'alice@example.com', 'hashed123', 'owner'),
   ('bobwalker', 'bob@example.com', 'hashed456', 'walker'),
   ('carol123', 'carol@example.com', 'hashed789', 'owner'),
-  ('john', 'dave@example.com', 'pw123', 'owner'),
-  ('eveowner', 'eve@example.com', 'pw456', 'owner');
+  ('john', 'john@example.com', 'pw123', 'owner'),
+  ('baptist', 'eve@example.com', 'pw456', 'owner');
 
 INSERT INTO Dogs (owner_id, name, size)
 VALUES
@@ -28,7 +28,7 @@ VALUES
   ((SELECT user_id FROM Users WHERE username = 'carol123'), 'Bella', 'small'),
   ((SELECT user_id FROM Users WHERE username = 'john'), 'Charlie', 'large'),
   ((SELECT user_id FROM Users WHERE username = 'alice123'), 'Oscar', 'small'),
-  ((SELECT user_id FROM Users WHERE username = 'eveowner'), 'Rex', 'medium');
+  ((SELECT user_id FROM Users WHERE username = 'baptist'), 'Rex', 'medium');
 
 INSERT INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
 VALUES
