@@ -13,3 +13,28 @@ To test your computer setup.
 [{"id":1,"title":"1984","author":"George Orwell"},{"id":2,"title":"To Kill a Mockingbird","author":"Harper Lee"},{"id":3,"title":"Brave New World","author":"Aldous Huxley"}]
 
 8. If this worked, then congratulations you are ready to start the exam.
+-- 1. Insert Users
+INSERT INTO Users (username, email, password_hash, role)
+VALUES
+  ('alice123', 'alice@example.com', 'hashed123', 'owner'),
+  ('bobwalker', 'bob@example.com', 'hashed456', 'walker'),
+  ('carol123', 'carol@example.com', 'hashed789', 'owner'),
+  ('daveowner', 'dave@example.com', 'pw123', 'owner'),
+  ('eveowner', 'eve@example.com', 'pw456', 'owner');
+
+-- 2. Insert Dogs (use subqueries to get owner_id)
+INSERT INTO Dogs (owner_id, name, size)
+VALUES
+  ((SELECT user_id FROM Users WHERE username = 'alice123'), 'Max', 'medium'),
+  ((SELECT user_id FROM Users WHERE username = 'carol123'), 'Bella', 'small'),
+  ((SELECT user_id FROM Users WHERE username = 'daveowner'), 'Charlie', 'large'),
+  ((SELECT user_id FROM Users WHERE username = 'alice123'), 'Oscar', 'small'),
+  ((SELECT user_id FROM Users WHERE username = 'eveowner'), 'Rex', 'medium');
+
+INSERT INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
+VALUES
+  ((SELECT dog_id FROM Dogs WHERE name = 'Max'), '2025-06-10 08:00:00', 30, 'Parklands', 'open'),
+  ((SELECT dog_id FROM Dogs WHERE name = 'Bella'), '2025-06-10 09:30:00', 45, 'Beachside Ave', 'accepted'),
+  ((SELECT dog_id FROM Dogs WHERE name = 'Charlie'), '2025-06-11 15:00:00', 60, 'Central Park', 'open'),
+  ((SELECT dog_id FROM Dogs WHERE name = 'Oscar'), '2025-06-12 14:00:00', 20, 'City Gardens', 'open'),
+  ((SELECT dog_id FROM Dogs WHERE name = 'Rex'), '2025-06-13 10:30:00', 40, 'Suburbia Oval', 'open');
