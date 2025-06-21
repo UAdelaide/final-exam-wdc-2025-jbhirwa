@@ -52,6 +52,4 @@ app.get('/api/walkers/summary', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch summary' });
   }
 });
-app.use(express.static(path.join(__dirname, 'public')));
-
 module.exports = app;
