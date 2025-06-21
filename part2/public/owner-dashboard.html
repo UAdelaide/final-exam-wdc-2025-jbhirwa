@@ -131,5 +131,14 @@
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <button id="logoutBtn">Logout</button>
+<script>
+document.getElementById('logoutBtn').onclick = async function() {
+  // Call the logout API endpoint
+  await fetch('/api/users/logout', { method: 'POST', credentials: 'same-origin' });
+  // Redirect to login page
+  window.location.href = '/index.html';
+};
+</script>
 </body>
 </html>
