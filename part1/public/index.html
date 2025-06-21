@@ -18,7 +18,7 @@
     <form v-if="!showDog" @submit.prevent="handleSubmit">
     <h4>you will need to click the small square to submit, once you enter your fav colour and name</h4>
 
-    <input v-model="favColor" placeholder="Enter your favorite colour" required type="">
+    <input v-model="favColor" placeholder="Enter your favorite colour" required type="text">
             <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultricies, augue vel cursus euismod, sapien nunc dictum ex, a consequat orci elit at nulla. Morbi aliquam placerat blandit. Vivamus dictum feugiat laoreet. Suspendisse cursus dolor in erat dictum, ut pretium lorem cursus. Nullam feugiat, mauris in scelerisque pretium, felis lectus porta eros, nec mattis mauris quam vitae orci.
         </p>
@@ -29,7 +29,7 @@
           Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Mauris aliquam egestas sapien, vel tincidunt est tempus in.
         </p>
       <p>Fill out this (unnecessary) form to see the Dog of the Day!</p>
-      <input v-model="name" placeholder="Enter your name" required>
+      <input v-model="name" placeholder="Enter your name" required type="text">
               <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultricies, augue vel cursus euismod, sapien nunc dictum ex, a consequat orci elit at nulla. Morbi aliquam placerat blandit. Vivamus dictum feugiat laoreet. Suspendisse cursus dolor in erat dictum, ut pretium lorem cursus. Nullam feugiat, mauris in scelerisque pretium, felis lectus porta eros, nec mattis mauris quam vitae orci.
         </p>
