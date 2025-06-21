@@ -13,10 +13,6 @@ app.use(express.static(path.join(__dirname, '/public')));
 // var cookieParser = require('cookie-parser');
 // var logger = require('morgan');
 var mysql = require('mysql2/promise');
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server running on port ${PORT}`);
-});
 // var app = express();
 
 // app.use(logger('dev'));
